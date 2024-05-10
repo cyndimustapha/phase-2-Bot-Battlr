@@ -1,5 +1,5 @@
 import React from "react";
-import BotsPage from "./BotsPage";
+import BotsPage from "./components/BotsPage";
 
 function App() {
   return (

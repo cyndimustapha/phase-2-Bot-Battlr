@@ -28,7 +28,11 @@ const YourBotArmy = ({ army, releaseBot, dischargeBot }) => {
                 <Button basic color="red" onClick={() => releaseBot(bot.id)}>
                   Release
                 </Button>
-                <Button basic color="yellow" onClick={() => dischargeBot(bot.id)}>
+                <Button
+                  basic
+                  color="yellow"
+                  onClick={() => dischargeBot(bot.id)}
+                >
                   Discharge
                 </Button>
               </div>

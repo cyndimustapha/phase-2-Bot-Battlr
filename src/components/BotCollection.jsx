@@ -36,11 +36,7 @@ const BotCollection = ({ enlistBot, removeBotFromCollection }) => {
             </div>
             <div className="extra content">
               <div className="ui two buttons">
-                <Button
-                  basic
-                  color="blue"
-                  onClick={() => enlistBot(bot.id)}
-                >
+                <Button basic color="blue" onClick={() => enlistBot(bot.id)}>
                   Enlist
                 </Button>
                 <Button basic color="red">
