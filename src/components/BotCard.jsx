@@ -1,3 +1,4 @@
+//BortCard.jsx
 import React from "react";
 
 const botTypeClasses = {

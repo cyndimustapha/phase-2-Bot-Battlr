@@ -1,3 +1,4 @@
+//BotCollection.jsx
 import React, { useState, useEffect } from "react";
 import BotCard from "./BotCard";
 import { Icon, Card, Image, Button } from "semantic-ui-react";

@@ -1,34 +1,23 @@
 // SortBar.jsx
 import React from "react";
+import { Button, Segment } from "semantic-ui-react";
 
 const SortBar = ({ handleSort }) => {
   return (
-    <div className="container mt-4 mb-4">
+    <Segment basic textAlign="center">
       <h3>Sort by:</h3>
-      <div className="btn-group" role="group">
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => handleSort("health")}
-        >
+      <Button.Group>
+        <Button basic color="blue" onClick={() => handleSort("health")}>
           Health
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => handleSort("damage")}
-        >
+        </Button>
+        <Button basic color="blue" onClick={() => handleSort("damage")}>
           Damage
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => handleSort("armor")}
-        >
+        </Button>
+        <Button basic color="blue" onClick={() => handleSort("armor")}>
           Armor
-        </button>
-      </div>
-    </div>
+        </Button>
+      </Button.Group>
+    </Segment>
   );
 };
 

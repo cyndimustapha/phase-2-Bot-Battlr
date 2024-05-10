@@ -1,3 +1,4 @@
+//BotsPage.jsx
 import React from "react";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
