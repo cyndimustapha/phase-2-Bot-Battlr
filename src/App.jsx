@@ -1,9 +1,9 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import BotCollection from './BotCollection';
-import YourBotArmy from './YourBotArmy';
-import BotSpecs from './BotSpecs';
+import BotCollection from './components/BotCollection';
+import YourBotArmy from './components/YourBotArmy';
+import BotSpecs from './components/BotSpecs';
 
 const App = () => {
   return (

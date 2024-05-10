@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// BotCollection.js
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const BotCollection = ({ history }) => {
+const BotCollection = ({ enlistBot }) => {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/bots')
+    fetch("/db.json") 
       .then((response) => response.json())
       .then((data) => {
         setBots(data.bots);
@@ -13,23 +14,33 @@ const BotCollection = ({ history }) => {
       .catch((error) => console.log(error));
   }, []);
 
-  const handleClick = (botId) => {
-    history.push(`/bots/${botId}`);
-  };
-
   return (
-    <div>
-      <h2>Bot Collection</h2>
-      {bots.map((bot) => (
-        <div key={bot.id} className="bot-card">
-          <h3>{bot.name}</h3>
-          <p>Class: {bot.bot_class}</p>
-          <p>Health: {bot.health}</p>
-          <p>Damage: {bot.damage}</p>
-          <p>Armor: {bot.armor}</p>
-          <button onClick={() => handleClick(bot.id)}>View Details</button>
-        </div>
-      ))}
+    <div className="container">
+      <h2 className="text-center mt-4 mb-4">Bot Collection</h2>
+      <div className="row">
+        {bots.map((bot) => (
+          <div key={bot.id} className="col-md-4 mb-4">
+            <div className="card h-100">
+              <div className="card-body">
+                <h3 className="card-title">{bot.name}</h3>
+                <p className="card-text">Class: {bot.bot_class}</p>
+                <p className="card-text">Health: {bot.health}</p>
+                <p className="card-text">Damage: {bot.damage}</p>
+                <p className="card-text">Armor: {bot.armor}</p>
+                <button
+                  className="btn btn-primary mr-2"
+                  onClick={() => enlistBot(bot.id)}
+                >
+                  Enlist
+                </button>
+                <Link to={`/bots/${bot.id}`} className="btn btn-secondary">
+                  View Details
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

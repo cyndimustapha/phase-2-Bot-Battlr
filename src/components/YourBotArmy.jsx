@@ -1,36 +1,37 @@
-import React, { useState } from 'react';
+// YourBotArmy.js
+import React from "react";
 
-const YourBotArmy = () => {
-  const [army, setArmy] = useState([]);
-
-  const handleClick = (botId) => {
-    // Check if the bot is already in the army
-    const isEnlisted = army.some((bot) => bot.id === botId);
-    if (!isEnlisted) {
-      // Find the bot in the bots collection
-      const botToAdd = bots.find((bot) => bot.id === botId);
-      // Add the bot to the army
-      setArmy([...army, botToAdd]);
-    } else {
-      // Remove the bot from the army
-      const updatedArmy = army.filter((bot) => bot.id !== botId);
-      setArmy(updatedArmy);
-    }
-  };
-
+const YourBotArmy = ({ army, releaseBot, dischargeBot }) => {
   return (
-    <div>
-      <h2>Your Bot Army</h2>
-      {army.map((bot) => (
-        <div key={bot.id} className="bot-card">
-          <h3>{bot.name}</h3>
-          <p>Class: {bot.bot_class}</p>
-          <p>Health: {bot.health}</p>
-          <p>Damage: {bot.damage}</p>
-          <p>Armor: {bot.armor}</p>
-          <button onClick={() => handleClick(bot.id)}>Remove from Army</button>
-        </div>
-      ))}
+    <div className="container">
+      <h2 className="text-center mt-4 mb-4">Your Bot Army</h2>
+      <div className="row">
+        {army.map((bot) => (
+          <div key={bot.id} className="col-md-4 mb-4">
+            <div className="card h-100">
+              <div className="card-body">
+                <h3 className="card-title">{bot.name}</h3>
+                <p className="card-text">Class: {bot.bot_class}</p>
+                <p className="card-text">Health: {bot.health}</p>
+                <p className="card-text">Damage: {bot.damage}</p>
+                <p className="card-text">Armor: {bot.armor}</p>
+                <button
+                  className="btn btn-danger mr-2"
+                  onClick={() => releaseBot(bot.id)}
+                >
+                  Release
+                </button>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => dischargeBot(bot.id)}
+                >
+                  Discharge
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
