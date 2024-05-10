@@ -1,11 +1,9 @@
-//YourBotArmy.jsx
 import React from "react";
 import { Card, Image, Button, Icon } from "semantic-ui-react";
 
 const YourBotArmy = ({ army, releaseBot, dischargeBot }) => {
   return (
     <div className="container">
-      <h2 className="text-center mt-4 mb-4">Your Bot Army</h2>
       <div className="ui three stackable cards">
         {army.map((bot) => (
           <div key={bot.id} className="ui card">
