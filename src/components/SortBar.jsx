@@ -1,4 +1,4 @@
-// SortBar.js
+// SortBar.jsx
 import React from "react";
 
 const SortBar = ({ handleSort }) => {

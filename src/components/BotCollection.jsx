@@ -1,4 +1,4 @@
-// BotCollection.js
+// BotCollection.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,7 +6,7 @@ const BotCollection = ({ enlistBot }) => {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
-    fetch("/db.json") 
+    fetch("/backend/db.json") 
       .then((response) => response.json())
       .then((data) => {
         setBots(data.bots);
