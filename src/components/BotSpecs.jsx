@@ -1,30 +1,78 @@
-// BotSpecs.jsx
 import React from "react";
-import { Link } from "react-router-dom";
 
-const BotSpecs = ({ bot, enlistBot }) => {
+const botTypeClasses = {
+  Assault: "icon military",
+  Defender: "icon shield",
+  Support: "icon plus circle",
+  Medic: "icon ambulance",
+  Witch: "icon magic",
+  Captain: "icon star",
+};
+
+function BotSpecs({ bot }) {
   return (
-    <div className="container">
-      <h2 className="text-center mt-4 mb-4">Bot Specs</h2>
-      <div className="card mb-4">
-        <div className="card-body">
-          <h3 className="card-title">{bot.name}</h3>
-          <p className="card-text">Class: {bot.bot_class}</p>
-          <p className="card-text">Health: {bot.health}</p>
-          <p className="card-text">Damage: {bot.damage}</p>
-          <p className="card-text">Armor: {bot.armor}</p>
+    <div className="ui segment">
+      <div className="ui two column centered grid">
+        <div className="row">
+          <div className="four wide column">
+            <img
+              alt="oh no!"
+              className="ui medium circular image bordered"
+              src={bot.avatar_url}
+            />
+          </div>
+          <div className="four wide column">
+            <h2>Name: {bot.name}</h2>
+            <p>
+              <strong>Catchphrase: </strong>
+              {bot.catchphrase}
+            </p>
+            <strong>
+              Class: {bot.bot_class}
+              <i className={botTypeClasses[bot.bot_class]} />
+            </strong>
+            <br />
+            <div className="ui segment">
+              <div className="ui three column centered grid">
+                <div className="row">
+                  <div className="column">
+                    <i className="icon large circular red heartbeat" />
+                    <strong>{bot.health}</strong>
+                  </div>
+                  <div className="column">
+                    <i className="icon large circular yellow lightning" />
+                    <strong>{bot.damage}</strong>
+                  </div>
+                  <div className="column">
+                    <i className="icon large circular blue shield" />
+                    <strong>{bot.armor}</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              className="ui button fluid"
+              onClick={() =>
+                console.log("connect this to a function that shows all bots")
+              }
+            >
+              Go Back
+            </button>
+            <button
+              className="ui button fluid"
+              onClick={() =>
+                console.log(
+                  "connect this to a function that adds this bot to your bot army list"
+                )
+              }
+            >
+              Enlist
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="text-center">
-        <Link to="/src/components/BotCollection.jsx" className="btn btn-primary mr-2">
-          Back to Bot Collection
-        </Link>
-        <button className="btn btn-success" onClick={() => enlistBot(bot.id)}>
-          Enlist Bot
-        </button>
       </div>
     </div>
   );
-};
+}
 
 export default BotSpecs;

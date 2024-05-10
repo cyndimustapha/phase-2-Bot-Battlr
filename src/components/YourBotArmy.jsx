@@ -1,32 +1,35 @@
-// YourBotArmy.jsx
 import React from "react";
+import { Card, Image, Button, Icon } from "semantic-ui-react";
 
 const YourBotArmy = ({ army, releaseBot, dischargeBot }) => {
   return (
     <div className="container">
       <h2 className="text-center mt-4 mb-4">Your Bot Army</h2>
-      <div className="row">
+      <div className="ui three stackable cards">
         {army.map((bot) => (
-          <div key={bot.id} className="col-md-4 mb-4">
-            <div className="card h-100">
-              <div className="card-body">
-                <h3 className="card-title">{bot.name}</h3>
-                <p className="card-text">Class: {bot.bot_class}</p>
-                <p className="card-text">Health: {bot.health}</p>
-                <p className="card-text">Damage: {bot.damage}</p>
-                <p className="card-text">Armor: {bot.armor}</p>
-                <button
-                  className="btn btn-danger mr-2"
-                  onClick={() => releaseBot(bot.id)}
-                >
+          <div key={bot.id} className="ui card">
+            <div className="image">
+              <Image src={bot.avatar_url} />
+            </div>
+            <div className="content">
+              <div className="header">{bot.name}</div>
+              <div className="meta">
+                <span className="date">Class: {bot.bot_class}</span>
+              </div>
+              <div className="description">
+                <p>Health: {bot.health}</p>
+                <p>Damage: {bot.damage}</p>
+                <p>Armor: {bot.armor}</p>
+              </div>
+            </div>
+            <div className="extra content">
+              <div className="ui two buttons">
+                <Button basic color="red" onClick={() => releaseBot(bot.id)}>
                   Release
-                </button>
-                <button
-                  className="btn btn-warning"
-                  onClick={() => dischargeBot(bot.id)}
-                >
+                </Button>
+                <Button basic color="yellow" onClick={() => dischargeBot(bot.id)}>
                   Discharge
-                </button>
+                </Button>
               </div>
             </div>
           </div>
