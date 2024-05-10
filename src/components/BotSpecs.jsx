@@ -16,7 +16,7 @@ const BotSpecs = ({ bot, enlistBot }) => {
         </div>
       </div>
       <div className="text-center">
-        <Link to="/" className="btn btn-primary mr-2">
+        <Link to="/src/components/BotCollection.jsx" className="btn btn-primary mr-2">
           Back to Bot Collection
         </Link>
         <button className="btn btn-success" onClick={() => enlistBot(bot.id)}>

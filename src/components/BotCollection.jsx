@@ -1,18 +1,28 @@
-// BotCollection.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const BotCollection = ({ enlistBot }) => {
+const BotCollection = ({ enlistBot, removeBotFromCollection }) => {
   const [bots, setBots] = useState([]);
+  const [enlistedClasses, setEnlistedClasses] = useState([]);
 
   useEffect(() => {
-    fetch("/backend/db.json") 
+    fetch("/backend/db.json")
       .then((response) => response.json())
       .then((data) => {
         setBots(data.bots);
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const handleEnlist = (bot) => {
+    if (!enlistedClasses.includes(bot.bot_class)) {
+      enlistBot(bot.id);
+      setEnlistedClasses([...enlistedClasses, bot.bot_class]);
+      removeBotFromCollection(bot.id); // Remove the enlisted bot from BotCollection
+    } else {
+      console.log(`Bot of class ${bot.bot_class} already enlisted.`);
+    }
+  };
 
   return (
     <div className="container">
@@ -29,7 +39,7 @@ const BotCollection = ({ enlistBot }) => {
                 <p className="card-text">Armor: {bot.armor}</p>
                 <button
                   className="btn btn-primary mr-2"
-                  onClick={() => enlistBot(bot.id)}
+                  onClick={() => handleEnlist(bot)}
                 >
                   Enlist
                 </button>
