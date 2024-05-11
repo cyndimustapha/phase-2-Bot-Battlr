@@ -5,6 +5,19 @@
 #### By *Cyndi Marren Mustapha*
 
 ## Description
+The Bot Battlr App is a web application where users can build and manage their own bot armies. Users can view profiles of available bots, enlist them into their army, release them, and even discharge them permanently.
+
+Users can do the following:
+1. View profiles of all available bots.
+2. Add individual bots to your army.
+3. Remove bots from your army.
+4. Permanently delete bots from the backend and your army.
+5. Sort bots by health, damage, or armor.
+6. Filter bots by class.
+7. Ensure only one bot from each class is enlisted.
+8. Choose to view bot details or enlist them in your army.
+9. Responsive design for different screen sizes.
+
 
 ## Installation
 You use git clone to be able to download the documents in the GitHub
