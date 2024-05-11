@@ -1,25 +1,28 @@
 import React from "react";
+import { Segment, Grid, Header } from "semantic-ui-react";
 import BotCard from "./BotCard";
 
 function YourBotArmy({ bots, removeBot, deleteBot }) {
-  const myArmyBots = bots.map((bot) => (
-    <BotCard
-      key={bot.id}
-      bot={bot}
-      handleSelect={removeBot}
-      deleteBot={deleteBot}
-    />
-  ));
+  const myArmyBots = bots.map((bot) => {
+    return (
+      <div key={bot.id} style={{ margin: "10px" }}>
+        <BotCard
+          bot={bot}
+          handleSelect={removeBot}
+          deleteBot={deleteBot}
+        />
+      </div>
+    );
+  });
 
   return (
-    <div className="ui segment inverted olive bot-army">
-      <div className="ui five column grid">
-        <div className="row bot-army-row">
+    <Segment inverted color="olive" className="bot-army">
+      <Grid columns={5}>
+        <Grid.Row className="bot-army-row">
           {myArmyBots}
-          Your Bot Army
-        </div>
-      </div>
-    </div>
+        </Grid.Row>
+      </Grid>
+    </Segment>
   );
 }
 

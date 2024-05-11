@@ -40,11 +40,7 @@ function BotCard({ bot, handleSelect, deleteBot }) {
           <Icon name="shield" />
           {armor}
         </span>
-        <div className="ui center aligned segment basic">
-          <Button basic color="red" onClick={handleDelete}>
-            X
-          </Button>
-        </div>
+        
       </Card.Content>
     </Card>
   );
