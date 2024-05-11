@@ -32,6 +32,9 @@ git clone https://github.com/cyndimustapha/phase-2-Bot-Battlr.git
 ```
 
 # Live Link
+https://phase-2-bot-battlr-sigma.vercel.app/
+
+# Screen Recording
 https://drive.google.com/file/d/19Tswfb0Oh86fwbPkziPDvwSB6IrSGb67/view?usp=sharing
 
 
