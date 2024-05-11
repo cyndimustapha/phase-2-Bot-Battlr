@@ -1,17 +1,16 @@
+//YourBotArmy.jsx
 import React from "react";
 import { Segment, Grid, Header } from "semantic-ui-react";
 import BotCard from "./BotCard";
 
 function YourBotArmy({ bots, removeBot, deleteBot }) {
   const myArmyBots = bots.map((bot) => {
-    return (
       <BotCard
         key={bot.id}
         bot={bot}
         handleSelect={removeBot}
         deleteBot={deleteBot}
       />
-    );
   });
 
   return (

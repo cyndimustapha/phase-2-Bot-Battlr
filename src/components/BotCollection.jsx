@@ -1,3 +1,4 @@
+//BotCollection.jsx
 import React, { useEffect, useState } from "react";
 import BotCard from "./BotCard";
 

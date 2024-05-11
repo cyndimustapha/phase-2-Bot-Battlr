@@ -1,13 +1,14 @@
+//BotSpecs.jsx
 import React from "react";
 import { Image, Segment, Button, Icon } from "semantic-ui-react";
 
 const botTypeClasses = {
-  Assault: "icon military",
-  Defender: "icon shield",
-  Support: "icon plus circle",
-  Medic: "icon ambulance",
-  Witch: "icon magic",
-  Captain: "icon star",
+  Assault: "military",
+  Defender: "shield",
+  Support: "plus circle",
+  Medic: "ambulance",
+  Witch: "magic",
+  Captain: "star",
 };
 
 function BotSpecs({ bot, handleEnlist, handleGoBack }) {

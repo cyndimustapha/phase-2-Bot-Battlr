@@ -1,13 +1,14 @@
+//BotCard.jsx
 import React from "react";
 import { Card, Image, Icon, Button } from "semantic-ui-react";
 
 const botTypeClasses = {
-  Assault: "icon military",
-  Defender: "icon shield",
-  Support: "icon plus circle",
-  Medic: "icon ambulance",
-  Witch: "icon magic",
-  Captain: "icon star",
+  Assault: "military",
+  Defender: "shield",
+  Support: "plus circle",
+  Medic: "ambulance",
+  Witch: "magic",
+  Captain: "star",
 };
 
 function BotCard({ bot, handleSelect, deleteBot }) {
