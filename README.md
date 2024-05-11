@@ -41,7 +41,7 @@ https://drive.google.com/file/d/19Tswfb0Oh86fwbPkziPDvwSB6IrSGb67/view?usp=shari
 ## Technologies used
 React
 Javascript
-CSS
+Semantic UI
 
 ## Support and contact details
 https://github.com/cyndimustapha
