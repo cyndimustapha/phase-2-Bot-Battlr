@@ -1,33 +1,53 @@
 import React from "react";
-import { Card, Image, Button, Icon } from "semantic-ui-react";
+import { Card, Image, Icon, Button } from "semantic-ui-react";
 
-const BotCard = ({ bot, enlistBot }) => {
+const botTypeClasses = {
+  Assault: "icon military",
+  Defender: "icon shield",
+  Support: "icon plus circle",
+  Medic: "icon ambulance",
+  Witch: "icon magic",
+  Captain: "icon star",
+};
+
+function BotCard({ bot, handleSelect, deleteBot }) {
+  const { id, avatar_url, bot_class, catchphrase, health, damage, armor } = bot;
+
+  function handleDelete() {
+    deleteBot(bot);
+  }
+
   return (
-    <Card>
-      <Image src={bot.avatar_url} wrapped ui={false} />
+    <Card onClick={() => handleSelect(bot)}>
+      <Image src={avatar_url} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{bot.name}</Card.Header>
         <Card.Meta>
-          <span className="date">Class: {bot.bot_class}</span>
+          <span className="date">{bot.bot_class}</span>
         </Card.Meta>
-        <Card.Description>
-          <p>Health: {bot.health}</p>
-          <p>Damage: {bot.damage}</p>
-          <p>Armor: {bot.armor}</p>
-        </Card.Description>
+        <Card.Description>{catchphrase}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <div className="ui two buttons">
-          <Button basic color="blue" onClick={() => enlistBot(bot.id)}>
-            Enlist
-          </Button>
-          <Button basic color="red">
+        <span>
+          <Icon name="heartbeat" />
+          {health}
+        </span>
+        <span>
+          <Icon name="lightning" />
+          {damage}
+        </span>
+        <span>
+          <Icon name="shield" />
+          {armor}
+        </span>
+        <div className="ui center aligned segment basic">
+          <Button basic color="red" onClick={handleDelete}>
             X
           </Button>
         </div>
       </Card.Content>
     </Card>
   );
-};
+}
 
 export default BotCard;

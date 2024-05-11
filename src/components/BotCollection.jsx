@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import BotCard from "./BotCard";
 
-const BotCollection = ({ botCollection, enlistBot }) => {
+function BotCollection({ bots, handleSelect, deleteBot }) {
+  const botList = bots.map((bot) => {
+    return (
+      <BotCard
+        key={bot.id}
+        bot={bot}
+        handleSelect={handleSelect}
+        deleteBot={deleteBot}
+      />
+    );
+  });
+
   return (
     <div className="container">
-      <div className="ui three stackable cards">
-        {botCollection.map((bot) => (
-          <BotCard key={bot.id} bot={bot} enlistBot={enlistBot} />
-        ))}
-      </div>
+      <div className="ui three stackable cards">{botList}</div>
     </div>
   );
-};
+}
 
 export default BotCollection;

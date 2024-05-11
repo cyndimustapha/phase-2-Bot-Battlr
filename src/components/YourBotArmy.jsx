@@ -1,45 +1,31 @@
 import React from "react";
-import { Card, Image, Button, Icon } from "semantic-ui-react";
+import { Segment, Grid, Header } from "semantic-ui-react";
+import BotCard from "./BotCard";
 
-const YourBotArmy = ({ army, releaseBot, dischargeBot }) => {
+function YourBotArmy({ bots, removeBot, deleteBot }) {
+  const myArmyBots = bots.map((bot) => {
+    return (
+      <BotCard
+        key={bot.id}
+        bot={bot}
+        handleSelect={removeBot}
+        deleteBot={deleteBot}
+      />
+    );
+  });
+
   return (
-    <div className="container">
-      <div className="ui three stackable cards">
-        {army.map((bot) => (
-          <div key={bot.id} className="ui card">
-            <div className="image">
-              <Image src={bot.avatar_url} />
-            </div>
-            <div className="content">
-              <div className="header">{bot.name}</div>
-              <div className="meta">
-                <span className="date">Class: {bot.bot_class}</span>
-              </div>
-              <div className="description">
-                <p>Health: {bot.health}</p>
-                <p>Damage: {bot.damage}</p>
-                <p>Armor: {bot.armor}</p>
-              </div>
-            </div>
-            <div className="extra content">
-              <div className="ui two buttons">
-                <Button basic color="red" onClick={() => releaseBot(bot.id)}>
-                  Release
-                </Button>
-                <Button
-                  basic
-                  color="yellow"
-                  onClick={() => dischargeBot(bot.id)}
-                >
-                  Discharge
-                </Button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Segment inverted color="olive" className="bot-army">
+      <Grid columns={5}>
+        <Grid.Row className="bot-army-row">
+          {myArmyBots}
+          <Header as="h2" textAlign="center" className="bot-army-header">
+            Your Bot Army
+          </Header>
+        </Grid.Row>
+      </Grid>
+    </Segment>
   );
-};
+}
 
 export default YourBotArmy;

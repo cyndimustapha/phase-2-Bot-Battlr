@@ -1,5 +1,5 @@
-//BotSpecs.jsx
 import React from "react";
+import { Image, Segment, Button, Icon } from "semantic-ui-react";
 
 const botTypeClasses = {
   Assault: "icon military",
@@ -10,15 +10,17 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotSpecs({ bot }) {
+function BotSpecs({ bot, handleEnlist, handleGoBack }) {
   return (
-    <div className="ui segment">
+    <Segment>
       <div className="ui two column centered grid">
         <div className="row">
           <div className="four wide column">
-            <img
+            <Image
               alt="oh no!"
-              className="ui medium circular image bordered"
+              size="medium"
+              circular
+              bordered
               src={bot.avatar_url}
             />
           </div>
@@ -30,49 +32,37 @@ function BotSpecs({ bot }) {
             </p>
             <strong>
               Class: {bot.bot_class}
-              <i className={botTypeClasses[bot.bot_class]} />
+              <Icon name={botTypeClasses[bot.bot_class]} />
             </strong>
             <br />
-            <div className="ui segment">
+            <Segment>
               <div className="ui three column centered grid">
                 <div className="row">
                   <div className="column">
-                    <i className="icon large circular red heartbeat" />
+                    <Icon name="heartbeat" color="red" circular />
                     <strong>{bot.health}</strong>
                   </div>
                   <div className="column">
-                    <i className="icon large circular yellow lightning" />
+                    <Icon name="lightning" color="yellow" circular />
                     <strong>{bot.damage}</strong>
                   </div>
                   <div className="column">
-                    <i className="icon large circular blue shield" />
+                    <Icon name="shield" color="blue" circular />
                     <strong>{bot.armor}</strong>
                   </div>
                 </div>
               </div>
-            </div>
-            <button
-              className="ui button fluid"
-              onClick={() =>
-                console.log("connect this to a function that shows all bots")
-              }
-            >
+            </Segment>
+            <Button fluid onClick={handleGoBack}>
               Go Back
-            </button>
-            <button
-              className="ui button fluid"
-              onClick={() =>
-                console.log(
-                  "connect this to a function that adds this bot to your bot army list"
-                )
-              }
-            >
+            </Button>
+            <Button fluid onClick={() => handleEnlist(bot)}>
               Enlist
-            </button>
+            </Button>
           </div>
         </div>
       </div>
-    </div>
+    </Segment>
   );
 }
 

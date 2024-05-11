@@ -1,23 +1,19 @@
 import React from "react";
 import { Button, Segment } from "semantic-ui-react";
 
-const SortBar = ({ handleSort }) => {
+export default function SortBar({ sortByArmor, sortByDamage, sortByHealth }) {
   return (
     <Segment basic textAlign="center">
-      <h3>Sort by:</h3>
-      <Button.Group>
-        <Button basic color="blue" onClick={() => handleSort("health")}>
-          Health
-        </Button>
-        <Button basic color="blue" onClick={() => handleSort("damage")}>
-          Damage
-        </Button>
-        <Button basic color="blue" onClick={() => handleSort("armor")}>
-          Armor
-        </Button>
-      </Button.Group>
+      <p style={{ fontSize: "large", marginRight: "1em" }}>Sort By:</p>
+      <Button basic color="blue" onClick={sortByHealth}>
+        Health
+      </Button>
+      <Button basic color="blue" onClick={sortByDamage}>
+        Damage
+      </Button>
+      <Button basic color="blue" onClick={sortByArmor}>
+        Armor
+      </Button>
     </Segment>
   );
-};
-
-export default SortBar;
+}
