@@ -2,12 +2,12 @@ import React from "react";
 import { Card, Image, Icon, Button } from "semantic-ui-react";
 
 const botTypeClasses = {
-  Assault: "military",
-  Defender: "shield",
-  Support: "plus circle",
-  Medic: "ambulance",
-  Witch: "magic",
-  Captain: "star",
+  Assault: "icon military",
+  Defender: "icon shield",
+  Support: "icon plus circle",
+  Medic: "icon ambulance",
+  Witch: "icon magic",
+  Captain: "icon star",
 };
 
 function BotCard({ bot, handleSelect, deleteBot }) {
