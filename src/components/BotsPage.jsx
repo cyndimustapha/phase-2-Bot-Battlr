@@ -1,7 +1,7 @@
-//BotsPage.jsx
-import React, { useEffect, useMemo, useState } from "react";
-import YourBotArmy from "./YourBotArmy";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import BotCollection from "./BotCollection";
+import YourBotArmy from "./YourBotArmy";
 import BotSpecs from "./BotSpecs";
 import SortBar from "./SortBar";
 
@@ -12,11 +12,10 @@ function BotsPage() {
   const [myArmy, setMyArmy] = useState([]);
   const [category, setCategory] = useState("");
 
-  // Fetching bots
   useEffect(() => {
-    fetch("http://localhost:3000/bots")
-      .then((res) => res.json())
-      .then((data) => setBots(data))
+    axios
+      .get("http://localhost:3000/bots")
+      .then((res) => setBots(res.data))
       .catch((error) => console.error(`Could not fetch bots: ${error}`));
   }, []);
 
@@ -49,29 +48,18 @@ function BotsPage() {
     setMyArmy(updatedMyArmy);
   }
 
-  const sortedBots = useMemo(() => {
-    let sortedItems = [...bots];
-    if (category === "armor") {
-      sortedItems.sort((a, b) => b.armor - a.armor);
-    } else if (category === "health") {
-      sortedItems.sort((a, b) => b.health - a.health);
-    } else if (category === "damage") {
-      sortedItems.sort((a, b) => b.damage - a.damage);
+  const sortedBots = bots.slice().sort((a, b) => {
+    switch (category) {
+      case "armor":
+        return b.armor - a.armor;
+      case "health":
+        return b.health - a.health;
+      case "damage":
+        return b.damage - a.damage;
+      default:
+        return 0;
     }
-    return sortedItems;
-  }, [category, bots]);
-
-  function sortByArmor() {
-    setCategory("armor");
-  }
-
-  function sortByDamage() {
-    setCategory("damage");
-  }
-
-  function sortByHealth() {
-    setCategory("health");
-  }
+  });
 
   return (
     <div>
@@ -89,9 +77,9 @@ function BotsPage() {
       ) : (
         <>
           <SortBar
-            sortByArmor={sortByArmor}
-            sortByDamage={sortByDamage}
-            sortByHealth={sortByHealth}
+            sortByArmor={() => setCategory("armor")}
+            sortByDamage={() => setCategory("damage")}
+            sortByHealth={() => setCategory("health")}
           />
           <BotCollection
             bots={sortedBots}

@@ -1,6 +1,6 @@
-//BotSpecs.jsx
 import React from "react";
-import { Image, Segment, Button, Icon } from "semantic-ui-react";
+import { Button, Segment } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 
 const botTypeClasses = {
   Assault: "military",
@@ -17,11 +17,9 @@ function BotSpecs({ bot, handleEnlist, handleGoBack }) {
       <div className="ui two column centered grid">
         <div className="row">
           <div className="four wide column">
-            <Image
+            <img
               alt="oh no!"
-              size="medium"
-              circular
-              bordered
+              className="ui medium circular image bordered"
               src={bot.avatar_url}
             />
           </div>
